@@ -35,6 +35,12 @@ export const getCategoriesById = async (req: Request, res: Response): Promise<Re
     }
 };
 
+/**
+ * Create a new categorie.
+ * @param req 
+ * @param res 
+ * @returns 
+ */
 export const createCategories = async (req: Request, res: Response): Promise<Response> => {
     const {categoryId, categoryName, categoryDescription} = req.body;
 
@@ -58,4 +64,53 @@ export const createCategories = async (req: Request, res: Response): Promise<Res
     } else {
         return res.status(500).json('Internal Server Error');
     }
+};
+
+/**
+ * Delete Categories by id
+ * @param req 
+ * @param res 
+ * @returns 
+ */
+export const deleteCategories = async (req: Request, res: Response): Promise<Response> => {
+
+    const id = parseInt(req.params.id);
+
+    try {
+        await pool.query('DELETE FROM categories WHERE category_id = $1', [id]);
+        return res.status(200).json(`The categorie ${id} delete successfully.`);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json('Internal Server Error');
+    }
+};
+
+/**
+ * Update Categories by Id
+ * @param req 
+ * @param res 
+ * @returns 
+ */
+export const updateCategories = async (req: Request, res: Response): Promise<Response> => {
+    const id = parseInt(req.params.id);
+    const {categoryName, categoryDescription} = req.body;
+
+    try {
+        await pool.query('UPDATE categories SET category_name = $1, description = $2 WHERE category_id = $3',
+            [categoryName,categoryDescription,id]
+        );
+
+        return res.json({
+            message: 'Category Successfully Updated.',
+            category: {
+                id,
+                categoryName,
+                categoryDescription,
+            },
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json('Internal Server Error');
+    }
+
 };
