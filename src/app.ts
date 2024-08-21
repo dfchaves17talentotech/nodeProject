@@ -2,6 +2,7 @@ import express, { Router } from "express";
 import { createCategories, deleteCategories, getCategories, getCategoriesById, updateCategories } from "./controllers/categories_controller";
 import { generateToken } from "./controllers/user_controller";
 import { authenticateToken } from "./middleware/authorization";
+import { errorHandler } from "./middleware/error";
 
 require('dotenv').config();
 
@@ -18,6 +19,7 @@ categoriesRoutes.put('/updateCategories/:id',authenticateToken, updateCategories
 userRoutes.post('/api/login', generateToken);
 
 app.use(express.json());
+app.use(errorHandler);
 app.use(categoriesRoutes);
 app.use(userRoutes);
 
