@@ -3,6 +3,7 @@ import { createCategories, deleteCategories, getCategories, getCategoriesById, u
 import { generateToken } from "./controllers/user_controller";
 import { authenticateToken } from "./middleware/authorization";
 import { errorHandler } from "./middleware/error";
+import { getCustomers } from "./controllers/customers_controller";
 
 require('dotenv').config();
 
@@ -11,17 +12,20 @@ const port = process.env.PORT;
 
 const categoriesRoutes = Router();
 const userRoutes = Router();
+const customersRoutes = Router();
 categoriesRoutes.get('/categories',authenticateToken, getCategories);
 categoriesRoutes.get('/categories/:id',authenticateToken, getCategoriesById);
 categoriesRoutes.post('/createCategories',authenticateToken, createCategories);
 categoriesRoutes.delete('/deleteCategories/:id',authenticateToken, deleteCategories);
 categoriesRoutes.put('/updateCategories/:id',authenticateToken, updateCategories);
 userRoutes.post('/api/login', generateToken);
+customersRoutes.get('/customers',getCustomers);
 
 app.use(express.json());
 app.use(errorHandler);
 app.use(categoriesRoutes);
 app.use(userRoutes);
+app.use(customersRoutes);
 
 app.listen(port, () =>{
     console.log(`Example app listening on port ${port}`)
