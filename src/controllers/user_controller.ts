@@ -9,17 +9,3 @@ export const generateToken = (req: Request, response:Response): Response => {
     const accessToken = jwt.sign(user, `${process.env.CLAVE_JWT}`, {expiresIn: '1h'});
     return response.status(200).json({accessToken});
 };
-
-export const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
-    const authHeaders = req.headers['authorization'];
-    const token = authHeaders && authHeaders.split(' ')[1];
-    if(!token) {
-        return res.status(401).json({error: 'Auth Token Not Found'});
-    }
-    jwt.verify(token, `${process.env.CLAVE_JWT}`, (err, user) => {
-        if(err) {
-            return res.status(403).json({error: 'Invalid Token'});
-        }
-    });
-    next();
-};

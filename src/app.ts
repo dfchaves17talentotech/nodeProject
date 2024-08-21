@@ -1,6 +1,7 @@
 import express, { Router } from "express";
 import { createCategories, deleteCategories, getCategories, getCategoriesById, updateCategories } from "./controllers/categories_controller";
-import { authenticateToken, generateToken } from "./controllers/user_controller";
+import { generateToken } from "./controllers/user_controller";
+import { authenticateToken } from "./middleware/authorization";
 
 require('dotenv').config();
 
