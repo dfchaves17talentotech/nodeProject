@@ -3,7 +3,7 @@ import { createCategories, deleteCategories, getCategories, getCategoriesById, u
 import { generateToken } from "./controllers/user_controller";
 import { authenticateToken } from "./middleware/authorization";
 import { errorHandler } from "./middleware/error";
-import { getCustomers } from "./controllers/customers_controller";
+import { createCustomer, deleteCustomer, getCustomers, getCustomersById, updateCustomers } from "./controllers/customers_controller";
 
 require('dotenv').config();
 
@@ -20,6 +20,10 @@ categoriesRoutes.delete('/deleteCategories/:id',authenticateToken, deleteCategor
 categoriesRoutes.put('/updateCategories/:id',authenticateToken, updateCategories);
 userRoutes.post('/api/login', generateToken);
 customersRoutes.get('/customers',getCustomers);
+customersRoutes.get('/customers/:id',getCustomersById);
+customersRoutes.post('/createCustomer', createCustomer);
+customersRoutes.delete('/deleteCustomer/:id', deleteCustomer);
+customersRoutes.put('/updateCustomer/:id', updateCustomers);
 
 app.use(express.json());
 app.use(errorHandler);
