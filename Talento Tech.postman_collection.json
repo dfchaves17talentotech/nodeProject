@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "3d6551a6-51ff-496e-ad32-964ec2aa1e67",
+		"name": "Talento Tech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37727281"
+	},
+	"item": [
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Get Categories",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZGZjaGF2ZXMiLCJpYXQiOjE3MjQyMzk4NTEsImV4cCI6MTcyNDI0MzQ1MX0.k_F7RekNO5ZEJRKeDAsd0Bo0yTsGGyjBt70kqX6FzHk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/categories",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Categories By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/categories",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Categories",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoryId\": \"9\",\n    \"categoryName\": \"Papeleria\",\n    \"categoryDescription\": \"Todo lo que tiene que ver con Papeleria\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/createCategories",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"createCategories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Categories",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoryName\": \"Cambiando\",\n    \"categoryDescription\": \"Todo lo que tiene que ver con Papeleria Cambiando\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/updateCategories/9",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"updateCategories",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Categories",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoryId\": \"9\",\n    \"categoryName\": \"Papeleria\",\n    \"categoryDescription\": \"Todo lo que tiene que ver con Papeleria\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/createCategories",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"createCategories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Get Customers",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customers By Id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Create Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"DAVCH1\",\n    \"companyName\": \"Luthor Corp\",\n    \"contactName\": \"David Chaves\",\n    \"contactTitle\": null,\n    \"address\": \"Avenida Siempre Viva 123\",\n    \"city\": \"Bogotá\",\n    \"region\": null,\n    \"postalCode\": null,\n    \"country\": \"Colombia\",\n    \"phone\": \"3136914676\",\n    \"fax\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/createCustomer",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"createCustomer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/deleteCustomer/DAVCH",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"deleteCustomer",
+								"DAVCH"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"companyName\": \"Luthor Corp\",\n    \"contactName\": \"David Chaves\",\n    \"contactTitle\": \"Owner\",\n    \"address\": \"Avenida Siempre Viva 123\",\n    \"city\": \"Bogotá\",\n    \"region\": \"Bogotá D.C.\",\n    \"postalCode\": \"110111\",\n    \"country\": \"Colombia\",\n    \"phone\": \"3136914676\",\n    \"fax\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/updateCustomer/DAVCH",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"updateCustomer",
+								"DAVCH"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Api Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"dfchaves\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
