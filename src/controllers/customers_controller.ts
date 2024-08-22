@@ -34,6 +34,12 @@ export const getCustomersById = async (req: Request, res: Response): Promise<Res
     }
 };
 
+/**
+ * Create Customers
+ * @param req 
+ * @param res 
+ * @returns 
+ */
 export const createCustomer = async (req: Request, res: Response): Promise<Response> => {
     const {customerId, companyName, contactName, contactTitle,
         address, postalCode, city, region, country, phone, fax} = req.body;
@@ -90,6 +96,12 @@ export const deleteCustomer = async (req: Request, res: Response): Promise<Respo
     }
 };
 
+/**
+ * Update Customers By Id.
+ * @param req 
+ * @param res 
+ * @returns 
+ */
 export const updateCustomers = async (req: Request, res: Response): Promise<Response> => {
     const customerId = req.params.id;
     const {companyName, contactName, contactTitle,
