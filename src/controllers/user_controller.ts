@@ -16,3 +16,26 @@ export const generateToken = async (req: Request, response:Response): Promise<Re
         return response.status(400).json('User Not found');
     }
 };
+
+export const createUser = async (req: Request, res: Response): Promise<Response> => {
+    const {userName, password, email} = req.body;
+    if (userName !== null && password !== null && email !== null){
+        try {
+            await pool.query('INSERT INTO users (username, password, email) values ($1, $2, $3)',
+                [userName, password, email]
+            );
+            return res.status(201).json({
+                message: 'User created successfully',
+                category: {
+                    userName,
+                    email,
+                }
+            });
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json('Internal Server Error');
+        }
+    } else {
+        return res.status(500).json('Internal Server Error');
+    }
+};
