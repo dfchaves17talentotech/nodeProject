@@ -10,7 +10,7 @@ import { Request, Response } from "express";
  */
 export const getCategories = async (req: Request, res:Response): Promise<Response> =>{
     try {
-        const response: QueryResult = await pool.query('SELECT * FROM categories;');
+        const response: QueryResult = await pool.query('SELECT * FROM categories ORDER BY category_id;');
         return res.status(200).json(response.rows);
     } catch (error) {
         console.error(error);
@@ -44,7 +44,9 @@ export const getCategoriesById = async (req: Request, res: Response): Promise<Re
 export const createCategories = async (req: Request, res: Response): Promise<Response> => {
     const {categoryId, categoryName, categoryDescription} = req.body;
 
-    if (categoryId !== null && categoryName !== null && categoryDescription !== null){
+    console.log(categoryId, categoryName, categoryDescription);
+
+    if (categoryId !== null && categoryName !== null && categoryDescription !== null && categoryDescription !== undefined){
         try {
             await pool.query('INSERT INTO categories (category_id, category_name, description) values ($1, $2, $3)',
                 [categoryId, categoryName, categoryDescription]
