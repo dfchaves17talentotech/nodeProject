@@ -4,6 +4,7 @@ import { customersRoutes } from "./routes/customer_routes";
 import { categoriesRoutes } from "./routes/categorie_routes";
 import { userRoutes } from "./routes/user_routes";
 import cors from "cors";
+import { paramosRouter } from "./routes/paramos_router";
 
 require('dotenv').config();
 
@@ -17,6 +18,8 @@ app.use(errorHandler);
 app.use(categoriesRoutes);
 app.use(userRoutes);
 app.use(customersRoutes);
+app.use(paramosRouter);
+
 
 app.listen(port, () =>{
     console.log(`Example app listening on port ${port}`)
